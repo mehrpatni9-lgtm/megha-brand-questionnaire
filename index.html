@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Your Voice, Your Brand | WithinWorks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f5ef; --card: #fffdf9; --surface: #f0ebe2;
+  --text: #2f2d29; --soft: #5f5a52; --faint: #8d877d;
+  --sage: #5d6b5c; --sage-wash: #e6ebe3; --clay: #b08d6f; --clay-wash: #f3e9df;
+  --forest: #2e3a31; --rule: rgba(47,45,41,.14);
+  --serif: "Fraunces", Georgia, serif; --sans: "Jost", system-ui, sans-serif; --script: "Caveat", cursive;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 44rem; margin: 0 auto; padding: 0 16px 8rem; }
+
+/* progress */
+.bar { position: sticky; top: 0; z-index: 5; background: rgba(248,245,239,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+.bar-in { max-width: 44rem; margin: 0 auto; padding: .7rem 16px; display: flex; align-items: center; gap: .9rem; }
+.brand { font-family: var(--serif); font-size: 1.05rem; white-space: nowrap; }
+.track { flex: 1; height: 4px; background: var(--surface); border-radius: 4px; overflow: hidden; }
+.fill { height: 100%; width: 0; background: var(--sage); transition: width .3s; }
+.count { font-size: .85rem; color: var(--faint); white-space: nowrap; }
+
+/* intro */
+.intro { padding: 3rem 0 1.5rem; }
+.eyebrow { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--clay); margin: 0 0 .6rem; font-weight: 400; }
+h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 8vw, 3.2rem); line-height: 1.1; margin: 0 0 1rem; }
+h1 em { color: var(--sage); }
+.lede { font-size: 1.15rem; color: var(--soft); margin: 0 0 1.2rem; }
+.how { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+.how li { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: .8rem 1rem; font-size: 1rem; }
+.how b { font-weight: 500; }
+.sign { font-family: var(--script); font-size: 1.6rem; color: var(--clay); margin: 1.2rem 0 0; }
+
+/* sections */
+.sec { margin-top: 3rem; }
+.sec-head { border-top: 1px solid var(--rule); padding-top: 1.6rem; margin-bottom: 1rem; }
+.sec-n { font-family: var(--script); font-size: 1.5rem; color: var(--clay); line-height: 1; }
+.sec h2 { font-family: var(--serif); font-weight: 400; font-size: 1.9rem; line-height: 1.2; margin: .2rem 0 .3rem; }
+.sec-why { color: var(--soft); font-size: 1rem; margin: 0; }
+
+.q { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 1.3rem 1.1rem; margin-top: 1rem; }
+.q.done { border-color: rgba(93,107,92,.45); }
+.q-t { font-family: var(--serif); font-size: 1.28rem; line-height: 1.35; margin: 0 0 .25rem; font-weight: 400; }
+.q-h { font-size: .92rem; color: var(--faint); margin: 0 0 .9rem; }
+
+/* chip options */
+.opts { display: grid; gap: .5rem; }
+.opts.wrapchips { display: flex; flex-wrap: wrap; }
+.opt { position: relative; display: block; cursor: pointer; }
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt span { display: block; padding: .85rem 1rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); font-size: 1.02rem; line-height: 1.45; transition: background .15s, border-color .15s; }
+.wrapchips .opt span { padding: .6rem .95rem; border-radius: 40px; }
+.opt span small { display: block; color: var(--faint); font-size: .88rem; margin-top: .15rem; }
+.opt span q { font-family: var(--serif); font-style: italic; quotes: "\201C" "\201D"; display: block; margin-top: .35rem; color: var(--text); }
+.opt span .tag { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); font-style: normal; }
+.opt input:checked + span { background: var(--sage-wash); border-color: var(--sage); }
+.opt input:focus-visible + span { outline: 2px solid var(--sage); outline-offset: 2px; }
+.opt.off span { opacity: .45; }
+
+/* matrix */
+.mx { display: grid; gap: .6rem; }
+.mx-row { border: 1px solid var(--rule); border-radius: 6px; padding: .75rem .8rem; background: var(--bg); }
+.mx-l { font-size: 1.02rem; margin-bottom: .5rem; }
+.mx-o { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; }
+.mx-o .opt span { text-align: center; padding: .55rem .3rem; font-size: .92rem; border-radius: 40px; background: var(--card); }
+.mx-o .opt input:checked + span.y { background: var(--sage-wash); border-color: var(--sage); }
+.mx-o .opt input:checked + span.m { background: var(--clay-wash); border-color: var(--clay); }
+.mx-o .opt input:checked + span.n { background: #ece6e3; border-color: #9a8f88; }
+
+textarea { width: 100%; min-height: 6.5rem; padding: .85rem 1rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); font: inherit; font-size: 1.02rem; color: var(--text); resize: vertical; }
+textarea:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
+.other { margin-top: .6rem; min-height: 3.2rem; }
+
+/* send */
+.send { margin-top: 3.5rem; background: var(--forest); color: #ece8df; border-radius: 10px; padding: 1.8rem 1.3rem; }
+.send h2 { font-family: var(--serif); font-weight: 400; font-size: 1.9rem; margin: 0 0 .4rem; color: #fff; }
+.send p { color: #c9c4b8; margin: 0 0 1.2rem; font-size: 1rem; }
+.btns { display: grid; gap: .6rem; }
+.btn { display: block; width: 100%; text-align: center; padding: 1rem; border-radius: 6px; font: inherit; font-size: 1.05rem; font-weight: 400; cursor: pointer; border: 1px solid transparent; text-decoration: none; }
+.btn-main { background: #e9e2d4; color: var(--forest); }
+.btn-ghost { background: transparent; color: #ece8df; border-color: rgba(236,232,223,.4); }
+.saved { font-size: .88rem; color: #a9a497; margin-top: 1rem; text-align: center; }
+.toast { position: fixed; left: 50%; bottom: 1.5rem; transform: translateX(-50%) translateY(150%); background: var(--forest); color: #fff; padding: .75rem 1.2rem; border-radius: 40px; font-size: .95rem; transition: transform .3s; z-index: 9; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+@media (min-width: 40rem) { .btns { grid-template-columns: 1fr 1fr 1fr; } .q { padding: 1.5rem 1.4rem; } }
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="bar-in"><span class="brand">WithinWorks</span><div class="track"><div class="fill" id="fill"></div></div><span class="count" id="count">0 answered</span></div></div>
+
+<div class="wrap">
+  <header class="intro">
+    <p class="eyebrow">For Megha</p>
+    <h1>Your voice, <em>your brand</em></h1>
+    <p class="lede">A few quick questions so we can shape your content, LinkedIn and community plan around how you actually want to show up. There are no right answers. Everything we build next is a test we can change.</p>
+    <ul class="how">
+      <li><b>About 12 minutes.</b> Mostly tap to choose.</li>
+      <li><b>Saves as you go</b> on this phone or laptop. Come back any time.</li>
+      <li><b>Skip anything</b> that doesn't feel right. That tells us something too.</li>
+    </ul>
+    <p class="sign">Mehr</p>
+  </header>
+
+  <form id="f" autocomplete="off"></form>
+
+  <section class="send">
+    <h2>Send it over</h2>
+    <p>When you're done, tap one button. Your answers arrive as a tidy summary.</p>
+    <div class="btns">
+      <button class="btn btn-main" type="button" id="wa">Send on WhatsApp</button>
+      <button class="btn btn-ghost" type="button" id="mail">Send by email</button>
+      <button class="btn btn-ghost" type="button" id="copy">Copy answers</button>
+    </div>
+    <p class="saved" id="saved">Your answers are saved on this device.</p>
+  </section>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var MAIL = "mehrpatni9@gmail.com";
+var YMN = ["Yes", "Sometimes", "Never"];
+
+var SECTIONS = [
+{ t: "Where you are now", why: "So we pitch your story at the right stage.", qs: [
+  { id: "stage", t: "How would you like to describe where you are as a coach?", type: "single", o: [
+    ["Experienced leader, newly certified coach", "Lead with 25 years, coaching as the next chapter"],
+    ["A coach in the making, openly", "Share the ACC journey as it happens"],
+    ["Just a coach, no qualifiers", "Let the work speak, keep the stage quiet"] ] },
+  { id: "acc", t: "After your ACC exam in November, how loud should we be about it?", type: "single", o: [
+    ["Celebrate it", "A post, an update on the site, a thank-you to your mentors"],
+    ["Quiet update", "Add it to the site and profile, no fuss"],
+    ["Not a talking point", "Credentials stay in the background"] ] },
+  { id: "who", t: "Who do you most want to reach first?", h: "Pick up to two.", type: "multi", max: 2, o: [
+    "Senior executives and CXOs", "Founders and business owners", "Women at a turning point", "Next-generation family business leaders", "Leaders moving countries or roles", "HR and people leaders" ], other: true }
+]},
+
+{ t: "How you sound", why: "Read these as styles, not scripts. Pick what feels most like you on a good day.", qs: [
+  { id: "words", t: "Which three words should people use about your voice?", h: "Pick three.", type: "multi", max: 3, chips: true, o: [
+    "Warm", "Calm", "Wise", "Direct", "Reflective", "Grounded", "Elegant", "Curious", "Playful", "Spiritual", "Practical", "Bold", "Gentle", "Sharp" ] },
+  { id: "post", t: "On the topic of a new leadership role, which post would you write?", type: "single", o: [
+    ["Reflective", "", "A new title changes what people expect of you overnight. What you expect of yourself takes longer to catch up. That gap is where the real work begins."],
+    ["Direct", "", "Most new leaders keep doing the job they were promoted from. Your job now is to make other people good at it."],
+    ["Story-led", "", "[A real moment from my banking or Traveazy years.] It took me a while to see what that moment was teaching me."],
+    ["Question-led", "", "One question for your week: where are you leading from obligation, and where from choice?"] ] },
+  { id: "invite", t: "How would you invite someone to a discovery call?", type: "single", o: [
+    ["Gentle", "", "If something here resonated, I'd love to hear where you are. I keep a few spaces each month for a complimentary 45-minute conversation."],
+    ["Simple", "", "Complimentary 45-minute discovery call. Link in the comments."],
+    ["Selective", "", "This work asks you to look inward. If you're ready for that, let's talk."],
+    ["Never ask directly", "", "I'd rather people find their own way to me."] ] },
+  { id: "advice", t: "Coaching draws answers out rather than giving advice. In your content, how far do you go?", type: "single", o: [
+    ["Mostly questions", "Prompts and reflections, very little telling"],
+    ["A mix", "A clear point of view, then a question to sit with"],
+    ["Clear opinions", "I'll say what I think about leadership and culture"] ] },
+  { id: "lang", t: "Language", type: "multi", chips: true, o: [ "English only", "A Hindi word now and then", "Spiritual language is fine", "Keep it secular", "Gentle humour is welcome", "Keep it serious" ] },
+  { id: "never", t: "Any words or phrases that are not you?", h: "Tap all that grate.", type: "multi", chips: true, o: [
+    "Unlock your potential", "Level up", "Hustle", "Game-changer", "Manifest", "Healing", "Boss", "Journey", "Thrive", "Abundance", "Empower", "Mindset shift" ], other: true }
+]},
+
+{ t: "What you're comfortable sharing", why: "Your line on personal content, topic by topic. Sometimes means with care, and you see it first.", qs: [
+  { id: "share", t: "Would you talk about…", type: "matrix", o: [
+    "Lessons from banking (Citibank, Barclays)",
+    "Building Traveazy from 10 to 300+ people",
+    "Mistakes you made as a leader",
+    "Being a woman leader in the Middle East",
+    "Your own coaching and ACC learning",
+    "Anonymised client themes (never names)",
+    "Spirituality, gratitude and mindfulness",
+    "Your yoga and meditation gatherings",
+    "Travel (45 countries and counting)",
+    "Motherhood and your daughters",
+    "Your dog",
+    "Opinions on corporate culture and HR" ] },
+  { id: "face", t: "How visible do you want to be?", type: "single", o: [
+    ["Words first", "Writing, with a professional photo now and then"],
+    ["Words and photos", "Including candid moments, not only portraits"],
+    ["Ready for camera", "Short videos of me talking"],
+    ["Camera, later", "Start with writing, try video in a few months"] ] }
+]},
+
+{ t: "Formats and rhythm", why: "Only plan what you can keep up and enjoy.", qs: [
+  { id: "formats", t: "Which formats feel natural?", h: "Tap all that apply.", type: "multi", o: [
+    ["Short LinkedIn posts", "A few lines and a thought"],
+    ["Longer essays", "Substack or LinkedIn articles"],
+    ["Carousels", "We design, you approve the words"],
+    ["Short talking videos", "60 seconds, phone camera"],
+    ["Voice notes we turn into posts", "You talk, we write"],
+    ["LinkedIn Live or a small online session", ""],
+    ["Instagram reflections and quotes", ""] ] },
+  { id: "freq", t: "How often could you post without it feeling like a chore?", type: "single", chips: true, o: [ "Once a week", "Twice a week", "Three times a week", "When inspired" ] },
+  { id: "time", t: "Time you can give each week, including approving drafts", type: "single", chips: true, o: [ "Under 30 minutes", "About an hour", "Two to three hours", "Whatever it takes" ] },
+  { id: "draft", t: "How do you prefer to work with us on content?", type: "single", o: [
+    ["We draft, you tweak", "Fastest"],
+    ["You share a thought, we shape it", "Voice note or a few lines from you"],
+    ["You write, we polish", "Most of you in it"] ] }
+]},
+
+{ t: "Getting heard", why: "Ways to reach the third and fourth circle of people who don't know you yet.", qs: [
+  { id: "pods", t: "Podcasts and conversations", h: "Tap all you'd say yes to.", type: "multi", o: [
+    ["Guest on established leadership podcasts", ""],
+    ["Guest on small or micro podcasts", "Niche hosts, 500 to 5,000 listeners, warm audiences"],
+    ["Instagram or LinkedIn lives with other coaches", ""],
+    ["Host my own small conversation series", "Leaders in conversation, monthly"],
+    ["Not for now", ""] ] },
+  { id: "speak", t: "Speaking and writing for others", h: "Tap all you'd say yes to.", type: "multi", o: [
+    ["Panels and talks at business events", ""],
+    ["Workshops inside companies", "A taster session for a leadership team"],
+    ["Women's leadership forums", ""],
+    ["Guest articles", "Gulf News, Khaleej Times, Entrepreneur Middle East"],
+    ["University or alumni talks", "Symbiosis and others"],
+    ["Not for now", ""] ] },
+  { id: "pr", t: "Paid PR, such as a sponsored feature on Lovin Dubai", h: "Lovin Dubai has no public price; features are quoted. Dubai PR agencies usually start around USD 5,000.", type: "single", o: [
+    ["Open to it now", ""],
+    ["Open once I have a few clients and testimonials", ""],
+    ["Only earned press, not paid", ""],
+    ["Not for me", ""] ] },
+  { id: "budget", t: "If a paid test made sense, what would you be comfortable spending in the first three months?", type: "single", chips: true, o: [ "Nothing yet", "Up to AED 2,000", "AED 2,000 to 5,000", "AED 5,000 to 15,000", "More, if it's right" ] }
+]},
+
+{ t: "Your community", why: "You already gather people. This is about how much of that can carry WithinWorks.", qs: [
+  { id: "ypo", t: "YPO: what feels comfortable?", h: "Tap all that apply.", type: "multi", o: [
+    ["Share my posts and one-pager in YPO groups", ""],
+    ["Offer a free talk or workshop to a chapter or network", ""],
+    ["Host a small circle for YPO members", ""],
+    ["Ask a few members to champion me and refer people", ""],
+    ["Mention coaching only when asked", ""],
+    ["Keep YPO separate from my coaching", ""] ] },
+  { id: "ypoHold", t: "What holds you back most with YPO?", h: "Optional. Pick any.", type: "multi", o: [
+    "I don't want to look like I'm selling to friends", "Others already promote there", "Confidentiality, people know each other", "Not sure what's allowed", "Nothing, I just haven't started" ], other: true },
+  { id: "events", t: "Your yoga and meditation gatherings", type: "single", o: [
+    ["Keep them personal", "They stay separate from WithinWorks"],
+    ["Mention WithinWorks lightly", "A line at the end, a card on the table"],
+    ["Make them WithinWorks events", "Branded, photographed, shared"],
+    ["Add a short coaching reflection", "A 15-minute prompt inside the session"] ] },
+  { id: "circle", t: "Would you host a small recurring circle?", h: "For example, a monthly leaders' or women's reflection circle.", type: "single", o: [
+    ["Yes, free, to build trust", ""],
+    ["Yes, paid", ""],
+    ["Maybe, as a one-off first", ""],
+    ["Not now", ""] ], },
+  { id: "circleSize", t: "If yes, how many people feels right?", type: "single", chips: true, o: [ "4 to 6", "8 to 12", "15 to 25", "Bigger" ] },
+  { id: "champ", t: "How do you feel about asking people to refer you?", type: "single", o: [
+    ["Easy", "I'll ask directly"],
+    ["Fine with a nudge", "If you give me the words"],
+    ["Hard", "I'd rather they offer"] ] }
+]},
+
+{ t: "Testing and learning", why: "We'll try things in small rounds and keep what works.", qs: [
+  { id: "bold", t: "How adventurous should our first experiments be?", type: "single", o: [
+    ["Safe", "Small, quiet tests"],
+    ["Measured", "A few new things a month, nothing loud"],
+    ["Brave", "Try what feels a bit uncomfortable"] ] },
+  { id: "win", t: "In three months, what would feel like a win?", h: "Pick up to two.", type: "multi", max: 2, o: [
+    "Ten discovery calls", "Three to five paying clients", "Two or three strong testimonials", "A clear, consistent voice online", "Being invited to speak", "A small community that shows up", "Feeling confident about putting myself out there" ] }
+]},
+
+{ t: "In your words", why: "Optional. A line or two is plenty. Voice notes welcome on WhatsApp instead.", qs: [
+  { id: "admire", t: "Whose presence do you admire, online or in a room? What about them?", type: "text" },
+  { id: "story", t: "One story from your life or career you'd be glad to tell", type: "text" },
+  { id: "offlimits", t: "Anything that is firmly off-limits?", type: "text" },
+  { id: "feel", t: "After reading something of yours, how should a stranger feel?", type: "text" }
+]}
+];
+
+var KEY = "ww-megha-brand-v1";
+var state = {};
+try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} progress(); }
+
+var form = document.getElementById("f");
+var total = 0, n = 0;
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function norm(o) { return typeof o === "string" ? [o, "", ""] : [o[0], o[1] || "", o[2] || ""]; }
+
+SECTIONS.forEach(function (s, si) {
+  var sec = document.createElement("section"); sec.className = "sec";
+  sec.innerHTML = '<div class="sec-head"><div class="sec-n">' + (si + 1) + '</div><h2>' + esc(s.t) + '</h2><p class="sec-why">' + esc(s.why) + '</p></div>';
+  s.qs.forEach(function (q) {
+    total++; n++;
+    var d = document.createElement("div"); d.className = "q"; d.id = "q-" + q.id;
+    var h = '<p class="q-t">' + esc(q.t) + '</p>' + (q.h ? '<p class="q-h">' + esc(q.h) + '</p>' : '');
+    if (q.type === "single" || q.type === "multi") {
+      var it = q.type === "single" ? "radio" : "checkbox";
+      h += '<div class="opts' + (q.chips ? ' wrapchips' : '') + '">';
+      q.o.forEach(function (o) {
+        var p = norm(o), quote = p[2];
+        var inner = quote ? '<em class="tag">' + esc(p[0]) + '</em><q>' + esc(quote) + '</q>' : esc(p[0]) + (p[1] ? '<small>' + esc(p[1]) + '</small>' : '');
+        h += '<label class="opt"><input type="' + it + '" name="' + q.id + '" value="' + esc(p[0]) + '"><span>' + inner + '</span></label>';
+      });
+      h += '</div>';
+      if (q.other) h += '<textarea class="other" data-other="' + q.id + '" placeholder="Something else? Type it here"></textarea>';
+    } else if (q.type === "matrix") {
+      h += '<div class="mx">';
+      q.o.forEach(function (row, ri) {
+        h += '<div class="mx-row"><div class="mx-l">' + esc(row) + '</div><div class="mx-o">';
+        YMN.forEach(function (v, vi) { h += '<label class="opt"><input type="radio" name="' + q.id + '__' + ri + '" value="' + v + '"><span class="' + "ymn"[vi] + '">' + v + '</span></label>'; });
+        h += '</div></div>';
+      });
+      h += '</div>';
+    } else {
+      h += '<textarea name="' + q.id + '" placeholder="Type here"></textarea>';
+    }
+    d.innerHTML = h; sec.appendChild(d);
+  });
+  form.appendChild(sec);
+});
+
+// restore
+Object.keys(state).forEach(function (k) {
+  var v = state[k];
+  if (k.indexOf("other:") === 0) { var t = form.querySelector('[data-other="' + k.slice(6) + '"]'); if (t) t.value = v; return; }
+  var els = form.querySelectorAll('[name="' + k + '"]');
+  els.forEach(function (el) {
+    if (el.tagName === "TEXTAREA") el.value = v;
+    else el.checked = Array.isArray(v) ? v.indexOf(el.value) > -1 : el.value === v;
+  });
+});
+
+function qById(id) { for (var i = 0; i < SECTIONS.length; i++) for (var j = 0; j < SECTIONS[i].qs.length; j++) if (SECTIONS[i].qs[j].id === id) return SECTIONS[i].qs[j]; }
+
+function limit(id) {
+  var q = qById(id); if (!q || !q.max) return;
+  var boxes = form.querySelectorAll('input[name="' + id + '"]');
+  var c = form.querySelectorAll('input[name="' + id + '"]:checked').length;
+  boxes.forEach(function (b) { var off = !b.checked && c >= q.max; b.disabled = off; b.parentNode.classList.toggle("off", off); });
+}
+
+form.addEventListener("input", function (e) {
+  var el = e.target;
+  if (el.dataset.other) { state["other:" + el.dataset.other] = el.value; save(); return; }
+  var name = el.name;
+  if (el.type === "checkbox") {
+    var nm = form.querySelectorAll('input[name="' + name + '"]:checked');
+    state[name] = Array.prototype.map.call(nm, function (x) { return x.value; });
+    limit(name);
+  } else state[name] = el.value;
+  save();
+});
+
+function answered(q) {
+  if (q.type === "matrix") return q.o.some(function (_, ri) { return state[q.id + "__" + ri]; });
+  var v = state[q.id];
+  return Array.isArray(v) ? v.length > 0 : !!(v && String(v).trim()) || !!(state["other:" + q.id] || "").trim();
+}
+function progress() {
+  var a = 0;
+  SECTIONS.forEach(function (s) { s.qs.forEach(function (q) { var ok = answered(q); if (ok) a++; document.getElementById("q-" + q.id).classList.toggle("done", ok); }); });
+  document.getElementById("fill").style.width = (a / total * 100) + "%";
+  document.getElementById("count").textContent = a + " of " + total;
+}
+SECTIONS.forEach(function (s) { s.qs.forEach(function (q) { if (q.max) limit(q.id); }); });
+progress();
+
+function summary() {
+  var out = ["MEGHA: VOICE AND BRAND ANSWERS", ""];
+  SECTIONS.forEach(function (s, si) {
+    out.push((si + 1) + ". " + s.t.toUpperCase());
+    s.qs.forEach(function (q) {
+      if (q.type === "matrix") {
+        out.push("- " + q.t);
+        q.o.forEach(function (row, ri) { out.push("   " + row + ": " + (state[q.id + "__" + ri] || "skipped")); });
+        return;
+      }
+      var v = state[q.id], o = (state["other:" + q.id] || "").trim();
+      var txt = Array.isArray(v) ? v.join("; ") : (v || "").trim();
+      if (o) txt = (txt ? txt + "; " : "") + "Other: " + o;
+      out.push("- " + q.t + "\n   " + (txt || "skipped"));
+    });
+    out.push("");
+  });
+  return out.join("\n");
+}
+function toast(m) { var t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); setTimeout(function () { t.classList.remove("show"); }, 2200); }
+function copy(text) {
+  if (navigator.clipboard) return navigator.clipboard.writeText(text);
+  var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); return Promise.resolve();
+}
+document.getElementById("copy").onclick = function () { copy(summary()).then(function () { toast("Copied. Paste it to Mehr anywhere."); }); };
+document.getElementById("mail").onclick = function () {
+  location.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent("My voice and brand answers") + "&body=" + encodeURIComponent(summary());
+};
+document.getElementById("wa").onclick = function () {
+  window.open("https://wa.me/?text=" + encodeURIComponent(summary()), "_blank");
+};
+</script>
+</body>
+</html>
