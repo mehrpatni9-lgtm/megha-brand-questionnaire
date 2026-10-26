@@ -349,7 +349,8 @@ document.getElementById("submit").onclick = function () {
     .then(function (r) { return r.json(); })
     .then(function (j) {
       if (String(j.success) !== "true") throw new Error(j.message);
-      document.getElementById("send").innerHTML = '<h2>Thank you, Megha</h2><p>Your answers are with Mehr. We will come back with a first draft of your voice and plan.</p>';
+      btn.disabled = false; btn.textContent = "Submit again";
+      note.textContent = "Thank you, your answers are with Mehr. Change anything above and submit again any time.";
     })
     .catch(function () {
       btn.disabled = false; btn.textContent = "Try again";
