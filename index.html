@@ -341,12 +341,20 @@ function copy(text) {
   var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); return Promise.resolve();
 }
 document.getElementById("submit").onclick = function () {
-  fetch("https://formsubmit.co/ajax/f762ce9bdab3fb81a174184167408f95", {
-    method: "POST", keepalive: true,
-    headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({ _subject: "Megha's voice and brand answers", _template: "box", _captcha: "false", Answers: summary() })
-  }).catch(function () {});
-  document.getElementById("send").innerHTML = '<h2>Thank you, Megha</h2><p>Your answers are with Mehr. We will come back with a first draft of your voice and plan.</p>';
+  var btn = this, note = document.getElementById("saved");
+  if (btn.disabled) return;
+  btn.disabled = true; btn.textContent = "Sending...";
+  var body = new URLSearchParams({ _subject: "Megha's voice and brand answers", _template: "box", _captcha: "false", Answers: summary() });
+  fetch("https://formsubmit.co/ajax/f762ce9bdab3fb81a174184167408f95", { method: "POST", body: body })
+    .then(function (r) { return r.json(); })
+    .then(function (j) {
+      if (String(j.success) !== "true") throw new Error(j.message);
+      document.getElementById("send").innerHTML = '<h2>Thank you, Megha</h2><p>Your answers are with Mehr. We will come back with a first draft of your voice and plan.</p>';
+    })
+    .catch(function () {
+      btn.disabled = false; btn.textContent = "Try again";
+      note.textContent = "That didn't go through. Please tap Try again.";
+    });
 };
 </script>
 </body>
