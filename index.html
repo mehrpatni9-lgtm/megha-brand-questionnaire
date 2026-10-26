@@ -90,6 +90,7 @@ textarea:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
 .btn { display: block; width: 100%; text-align: center; padding: 1rem; border-radius: 6px; font: inherit; font-size: 1.05rem; font-weight: 400; cursor: pointer; border: 1px solid transparent; text-decoration: none; }
 .btn-main { background: #e9e2d4; color: var(--forest); }
 .btn-ghost { background: transparent; color: #ece8df; border-color: rgba(236,232,223,.4); }
+.btns.one { grid-template-columns: 1fr; }
 .saved { font-size: .88rem; color: #a9a497; margin-top: 1rem; text-align: center; }
 .toast { position: fixed; left: 50%; bottom: 1.5rem; transform: translateX(-50%) translateY(150%); background: var(--forest); color: #fff; padding: .75rem 1.2rem; border-radius: 40px; font-size: .95rem; transition: transform .3s; z-index: 9; }
 .toast.show { transform: translateX(-50%) translateY(0); }
@@ -115,15 +116,13 @@ textarea:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
 
   <form id="f" autocomplete="off"></form>
 
-  <section class="send">
-    <h2>Send it over</h2>
-    <p>When you're done, tap one button. Your answers arrive as a tidy summary.</p>
-    <div class="btns">
-      <button class="btn btn-main" type="button" id="wa">Send on WhatsApp</button>
-      <button class="btn btn-ghost" type="button" id="mail">Send by email</button>
-      <button class="btn btn-ghost" type="button" id="copy">Copy answers</button>
+  <section class="send" id="send">
+    <h2>All done?</h2>
+    <p>Tap submit and your answers come straight to Mehr. You can skip anything you like.</p>
+    <div class="btns one">
+      <button class="btn btn-main" type="button" id="submit">Submit my answers</button>
     </div>
-    <p class="saved" id="saved">Your answers are saved on this device.</p>
+    <p class="saved" id="saved">Your answers are saved on this device until you submit.</p>
   </section>
 </div>
 <div class="toast" id="toast"></div>
@@ -385,12 +384,24 @@ function copy(text) {
   if (navigator.clipboard) return navigator.clipboard.writeText(text);
   var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); return Promise.resolve();
 }
-document.getElementById("copy").onclick = function () { copy(summary()).then(function () { toast("Copied. Paste it to Mehr anywhere."); }); };
-document.getElementById("mail").onclick = function () {
-  location.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent("My voice and brand answers") + "&body=" + encodeURIComponent(summary());
-};
-document.getElementById("wa").onclick = function () {
-  window.open("https://wa.me/?text=" + encodeURIComponent(summary()), "_blank");
+var sending = false;
+document.getElementById("submit").onclick = function () {
+  if (sending) return;
+  var btn = this, note = document.getElementById("saved");
+  sending = true; btn.textContent = "Sending...";
+  fetch("https://formsubmit.co/ajax/" + MAIL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify({ _subject: "Megha's voice and brand answers", _template: "box", _captcha: "false", Answers: summary() })
+  }).then(function (r) { return r.json(); }).then(function (j) {
+    if (String(j.success) !== "true") throw new Error(j.message || "failed");
+    document.getElementById("send").innerHTML = '<h2>Thank you, Megha</h2><p>Your answers are with Mehr. We will come back with a first draft of your voice and plan.</p>';
+  }).catch(function () {
+    sending = false; btn.textContent = "Try again";
+    copy(summary()).then(function () {
+      note.textContent = "It didn't go through, so your answers are copied. Paste them to Mehr on WhatsApp.";
+    });
+  });
 };
 </script>
 </body>
