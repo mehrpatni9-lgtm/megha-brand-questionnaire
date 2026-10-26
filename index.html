@@ -110,17 +110,9 @@ textarea:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
   <header class="intro">
     <p class="eyebrow">For Megha</p>
     <h1>Your voice, <em>your brand</em></h1>
-    <p class="lede">This is the plan for your brand, in the order we'd build it. Each stage asks what feels right to you, so we start with what you can do this month and grow from there. Everything is a test we can change.</p>
-    <ol class="road">
-      <li><b>This month</b><span>Start where you are</span></li>
-      <li><b>Foundation</b><span>How you sound, what you share</span></li>
-      <li><b>Months 1 to 6</b><span>Three content cycles, Instagram first</span></li>
-      <li><b>Months 3 to 9</b><span>Community and referrals</span></li>
-      <li><b>Months 6 to 12</b><span>Podcasts, talks, press</span></li>
-    </ol>
+    <p class="lede">A short menu of what we could build together for your brand. Tap what feels right, write your own, or skip what you're not sure about yet. Nothing here is fixed.</p>
     <ul class="how">
-      <li><b>About 15 minutes.</b> Mostly tap to choose. Saves as you go.</li>
-      <li><b>Skip anything</b> that doesn't feel right. That tells us something too.</li>
+      <li><b>About 10 minutes.</b> Mostly tap to choose. Saves as you go.</li>
     </ul>
     <p class="sign">Mehr</p>
   </header>
@@ -142,181 +134,99 @@ var MAIL = "mehrpatni9@gmail.com";
 var YMN = ["Yes", "Sometimes", "Never"];
 
 var SECTIONS = [
-{ stage: "Stage 1 · This month", t: "Start where you are", why: "The first moves. Small, doable, and in your own name.", qs: [
-  { id: "stage", w: "Sets how your Instagram bio, LinkedIn headline and first posts introduce you.", t: "How would you like to describe where you are as a coach?", type: "single", o: [
-    ["Experienced leader, newly certified coach", "Lead with 25 years, coaching as the next chapter"],
-    ["A coach in the making, openly", "Share the ACC journey as it happens"],
-    ["Just a coach, no qualifiers", "Let the work speak"] ] },
-  { id: "who", w: "Tells us who every post is written for, so it feels personal to them.", t: "Who do you most want to reach first?", h: "Pick up to two.", type: "multi", max: 2, o: [
-    "Senior executives and CXOs", "Founders and business owners", "Women at a turning point", "Next-generation family business leaders", "Leaders moving countries or roles", "HR and people leaders" ], other: true },
-  { id: "igReady", w: "Tells us whether week one is setting up or posting.", t: "Your Instagram in your own name", type: "single", o: [
-    ["Set up and posting", ""], ["Set up, not posting yet", ""], ["Not set up yet", "We'll do it with you"] ] },
-  { id: "first", w: "Picks your very first action, so the plan starts this week, not someday.", t: "Which first step feels right?", h: "Pick one.", type: "single", o: [
-    ["A short reel: why I became a coach after 25 years", "Instagram"],
-    ["A launch post to my Traveazy and banking network", "LinkedIn"],
-    ["Personally message ten people who'd champion me", "WhatsApp, one to one"],
-    ["Host one small gathering with a short reflection", "In person"] ] },
-  { id: "time", w: "Helps us plan around your week.", t: "Time you can give each week, including approving drafts", type: "single", chips: true, o: [ "Under 30 minutes", "About an hour", "Two to three hours", "Whatever it takes" ] },
-  { id: "draft", w: "Shapes how we work together, so approving content takes minutes.", t: "How do you prefer to make content with us?", type: "single", o: [
-    ["We draft, you tweak", "Fastest"],
-    ["You send a voice note, we shape it", "Most natural for many people"],
-    ["You write, we polish", "Most of you in it"] ] }
+{ t: "You as a coach", why: "How you'd like to be seen.", qs: [
+  { id: "stage", w: "Sets how your bio and first posts introduce you.", t: "How would you like to introduce yourself?", type: "single", o: [
+    "A seasoned leader, now a coach", "A coach learning in the open", "Simply a coach" ] },
+  { id: "who", w: "Tells us who your content speaks to.", t: "Who would you love to work with most?", h: "Pick up to two.", type: "multi", max: 2, o: [
+    "Senior leaders", "Founders", "Women at a turning point", "Family business heirs", "People changing countries or roles" ] },
+  { id: "words", w: "Becomes the checklist for everything we write as you.", t: "Three words for how you want to sound", h: "Pick three.", type: "multi", max: 3, chips: true, o: [
+    "Warm", "Calm", "Wise", "Direct", "Reflective", "Grounded", "Elegant", "Curious", "Playful", "Spiritual", "Practical", "Bold" ] },
+  { id: "advice", w: "Finds your balance between asking and telling.", t: "When you share an idea, you'd rather…", type: "single", o: [
+    "Ask a question", "Share my view", "A bit of both" ] },
+  { id: "invite", w: "Sets how softly or directly we invite people to a call.", t: "Inviting people to a discovery call should feel…", type: "single", o: [
+    "Gentle", "Simple and clear", "Only for those who are ready", "Let them find me" ] },
+  { id: "never", w: "Builds a list of words we'll never use for you.", t: "Any of these feel not like you?", h: "Tap all that grate.", type: "multi", chips: true, o: [
+    "Unlock your potential", "Level up", "Hustle", "Manifest", "Healing", "Thrive", "Empower", "Mindset shift" ] }
 ]},
 
-{ stage: "Stage 2 · Foundation", t: "How you sound", why: "Read these as styles, not scripts. Pick what feels like you on a good day.", qs: [
-  { id: "words", w: "Becomes your voice checklist. Every draft gets tested against these three words.", t: "Which three words should people use about your voice?", h: "Pick three.", type: "multi", max: 3, chips: true, o: [
-    "Warm", "Calm", "Wise", "Direct", "Reflective", "Grounded", "Elegant", "Curious", "Playful", "Spiritual", "Practical", "Bold", "Gentle", "Sharp" ] },
-  { id: "post", w: "Shows your natural writing style, so drafts sound like you from day one.", t: "On a new leadership role, which post would you write?", type: "single", o: [
-    ["Reflective", "", "A new title changes what people expect of you overnight. What you expect of yourself takes longer to catch up. That gap is where the real work begins."],
-    ["Direct", "", "Most new leaders keep doing the job they were promoted from. Your job now is to make other people good at it."],
-    ["Story-led", "", "[A real moment from my banking or Traveazy years.] It took me a while to see what that moment was teaching me."],
-    ["Question-led", "", "One question for your week: where are you leading from obligation, and where from choice?"] ] },
-  { id: "advice", w: "Finds your balance between coaching questions and a clear point of view.", t: "Coaching draws answers out rather than giving advice. In your content, how far do you go?", type: "single", o: [
-    ["Mostly questions", "Prompts and reflections, very little telling"],
-    ["A mix", "A clear view, then a question to sit with"],
-    ["Clear opinions", "I'll say what I think about leadership and culture"] ] },
-  { id: "invite", w: "Sets how your posts end, and how often we ask for a call.", t: "How would you invite someone to a discovery call?", type: "single", o: [
-    ["Gentle", "", "If something here resonated, I'd love to hear where you are. I keep a few spaces each month for a complimentary 45-minute conversation."],
-    ["Simple", "", "Complimentary 45-minute discovery call. Link in bio."],
-    ["Selective", "", "This work asks you to look inward. If you're ready for that, let's talk."],
-    ["Never ask directly", "", "I'd rather people find their own way to me."] ] },
-  { id: "lang", w: "Sets the vocabulary we write in.", t: "Language", type: "multi", chips: true, o: [ "English only", "A Hindi word now and then", "Spiritual language is fine", "Keep it secular", "Gentle humour is welcome", "Keep it serious" ] },
-  { id: "never", w: "Builds your banned-words list, so nothing sounds like generic coaching.", t: "Any words or phrases that are not you?", h: "Tap all that grate.", type: "multi", chips: true, o: [
-    "Unlock your potential", "Level up", "Hustle", "Game-changer", "Manifest", "Healing", "Boss", "Journey", "Thrive", "Abundance", "Empower", "Mindset shift" ], other: true },
+{ t: "What you'd share", why: "Your comfort line, topic by topic.", qs: [
   { id: "share", w: "Draws your line on personal content, so no draft ever crosses it.", t: "Would you talk about…", h: "Sometimes means with care, and you see it first.", type: "matrix", o: [
-    "Lessons from banking (Citibank, Barclays)",
-    "Building Traveazy from 10 to 300+ people",
-    "Mistakes you made as a leader",
+    "Banking days (Citibank, Barclays)",
+    "Building Traveazy",
+    "Mistakes as a leader",
     "Being a woman leader in the Middle East",
-    "Your own coaching and ACC learning",
-    "Anonymised client themes (never names)",
-    "Spirituality, gratitude and mindfulness",
+    "Learning to be a coach",
+    "Client themes, never names",
+    "Spirituality and mindfulness",
     "Your yoga and meditation gatherings",
-    "Travel (45 countries and counting)",
-    "Motherhood and your daughters",
-    "Opinions on corporate culture and HR" ] },
-  { id: "face", w: "Decides whether reels show your face, your voice, or neither.", t: "How visible do you want to be on camera?", type: "single", o: [
-    ["Face to camera", "Short talking reels"],
-    ["Voice, not face", "My voiceover over calm visuals"],
-    ["Photos and words", "No video for now"],
-    ["Camera, later", "Start quieter, try video in a few months"] ] }
+    "Travel",
+    "Motherhood" ] },
+  { id: "face", w: "Tells us whether to plan reels with your face, your voice, or neither.", t: "On camera, you're happy to…", type: "single", o: [
+    "Talk to camera", "Use my voice, not my face", "Stick to photos and words" ] }
 ]},
 
-{ stage: "Stage 3 · Months 1 to 6", t: "Your content cycles", why: "Our proposal: three cycles, each building on the last. Instagram leads, LinkedIn gets its own cut of the same idea. Tell us what fits.", qs: [
-  { id: "c1", w: "Fills your first four to six weeks. People hire a coach they feel they know.", t: "Cycle 1: Get to know Megha. Which of these would you make?", h: "Tap all you'd do.", type: "multi", o: [
-    ["Why I became a coach after 25 years", ""],
-    ["My rituals: journaling, meditation, how I start a day", ""],
-    ["Three things banking taught me about people", ""],
-    ["What a Chief People Officer sees that others miss", ""],
-    ["My desk, my books, my tools", ""],
-    ["Answering the questions people ask me about coaching", ""] ] },
-  { id: "c2", w: "Turns being new into a strength. People trust someone who learns in the open.", t: "Cycle 2: Learning moments. Short reels on what you're learning as a coach.", h: "Tap all you'd do.", type: "multi", o: [
-    ["My ACC exam diary", "Before, during, after November"],
-    ["A coaching tool in 60 seconds", "Wheel of Life, saboteurs, values"],
-    ["One question that shifted a session", "No names, ever"],
-    ["A book or idea I'm sitting with", ""],
-    ["Something I got wrong, and what I learnt", ""],
-    ["A lesson from my own coach or mentor", ""] ] },
-  { id: "acc", w: "Decides whether November becomes a moment we plan around.", t: "Your ACC result in November: how loud?", type: "single", o: [
-    ["Celebrate it", "A post, a site update, a thank-you to mentors"],
-    ["Quiet update", "Site and profile, no fuss"],
-    ["Not a talking point", ""] ] },
-  { id: "c3name", w: "Names your signature series: the thing people come back for and remember you by.", t: "Cycle 3: Your own series. Which name feels like yours?", type: "single", o: [
-    ["Within Works with Megha", "Your brand name as the series"],
-    ["The Within Question", "One question a week"],
-    ["Inside Out Notes", "From your headline: transformation from the inside out"],
-    ["Within a Minute", "60-second reflections"] ], other: true },
-  { id: "c3format", w: "Decides what the series looks like each week, so it's easy to repeat.", t: "What should the series be?", h: "Tap all you like.", type: "multi", o: [
-    ["A weekly 60-second reel with one question", ""],
-    ["A carousel prompt to save and journal with", ""],
-    ["A monthly live circle on the theme", ""],
-    ["A short letter on Substack", ""],
-    ["Later: a workshop built on the series", ""] ] },
-  { id: "order", w: "Checks the sequence before we build the calendar.", t: "Does this order feel right?", type: "single", o: [
-    ["Yes: get to know me, learning moments, then the series", ""],
-    ["Start with learning moments", ""],
-    ["Start with the series", ""],
-    ["Let's talk it through", ""] ] }
+{ t: "Content you'd enjoy", why: "A menu of what we could make with you. Tap what you'd enjoy.", qs: [
+  { id: "c1", w: "Helps people get to know you. People choose a coach they feel they know.", t: "Getting to know you", type: "multi", o: [
+    "Why I became a coach", "My daily rituals", "What banking taught me", "What I learnt leading people", "My books and tools", "Questions people ask me" ] },
+  { id: "c2", w: "Turns being new into a strength. People trust someone who learns openly.", t: "Your learning moments", type: "multi", o: [
+    "My ACC exam journey", "A coaching tool in a minute", "A question that shifted a session", "A book I'm reading", "Something I got wrong" ] },
+  { id: "acc", w: "Decides whether your ACC result becomes a moment we celebrate.", t: "When your ACC comes through, shall we…", type: "single", o: [
+    "Celebrate it", "Quietly update", "Leave it in the background" ] }
 ]},
 
-{ stage: "Stage 3 · Your two platforms", t: "Instagram first, LinkedIn second", why: "Your LinkedIn is mostly Traveazy and banking people. Your Instagram can reach new circles. So each gets a different job.", qs: [
-  { id: "igFeel", w: "Sets the look and mood of your main platform.", t: "Instagram is your main stage. What should it feel like?", type: "single", o: [
-    ["Calm and reflective", "Prompts, quiet visuals, space to think"],
-    ["Warm and personal", "My face, my voice, my rituals"],
-    ["Practical", "Tools and short lessons"],
-    ["A mix of all three", ""] ] },
-  { id: "igFormats", w: "Picks the Instagram formats in your plan.", t: "Instagram formats you'd enjoy", h: "Tap all that apply.", type: "multi", o: [
-    ["Reels talking to camera", ""], ["Reels with my voiceover", "No face needed"], ["Carousels", "We design, you approve the words"], ["Quote and prompt posts", ""], ["Stories: polls, questions, behind the scenes", ""], ["Lives with other coaches or guests", ""] ] },
-  { id: "igFreq", w: "Sets a rhythm you can keep.", t: "Instagram rhythm", type: "single", chips: true, o: [ "Twice a week", "Three times a week", "Four or more", "Once a week to start" ] },
-  { id: "liJob", w: "Gives LinkedIn one clear job, so it doesn't compete with Instagram for your time.", t: "LinkedIn's main job", type: "single", o: [
-    ["Referrals", "Turn my Traveazy and banking network into champions who send people my way"],
-    ["Credibility", "Let them see the new chapter, nothing more"],
-    ["Thought leadership", "Leadership and people topics for senior readers"],
-    ["Light touch", "Repost the best of Instagram"] ] },
-  { id: "liAdapt", w: "Decides whether we write once and adapt, or write twice.", t: "How should the two connect?", type: "single", o: [
-    ["Same idea, two cuts", "A reflective reel on Instagram, the leadership lesson on LinkedIn"],
-    ["Separate content for each", ""],
-    ["Instagram only for now", "LinkedIn once a month"] ] },
-  { id: "liFreq", w: "Sets a LinkedIn rhythm that stays light.", t: "LinkedIn rhythm", type: "single", chips: true, o: [ "Once a week", "Twice a month", "Once a month", "When there's news" ] }
+{ t: "Your signature series", why: "A recurring series you become known for. Here are four we'd build for you.", qs: [
+  { id: "series", w: "Picks the one idea we'll build into your own series.", t: "Which one feels most like you?", type: "single", o: [
+    ["The Within Question", "One question a week to sit with"],
+    ["Inside Out Notes", "Short reflections from your life and work"],
+    ["Within a Minute", "60-second reels on one idea"],
+    ["Within Works with Megha", "Conversations with leaders you admire"] ] }
 ]},
 
-{ stage: "Stage 4 · Months 3 to 9", t: "Your community", why: "Referral is your engine. You already gather people; this is how much of that can carry WithinWorks.", qs: [
-  { id: "champ", w: "Shapes the referral plan, including whether we write the asks for you.", t: "How do you feel about asking people to refer you?", type: "single", o: [
-    ["Easy", "I'll ask directly"], ["Fine with a nudge", "If you give me the words"], ["Hard", "I'd rather they offer"] ] },
-  { id: "ypo", w: "Shows how to bring in your strongest network without it feeling like selling.", t: "YPO: what feels comfortable?", h: "Tap all that apply.", type: "multi", o: [
-    ["Share my posts and one-pager in YPO groups", ""],
-    ["Offer a free talk or workshop to a chapter", ""],
-    ["Host a small circle for YPO members", ""],
-    ["Ask a few members to champion me", ""],
-    ["Mention coaching only when asked", ""],
-    ["Keep YPO separate from my coaching", ""] ] },
-  { id: "ypoHold", w: "Names the hesitation, so the YPO plan works around it.", t: "What holds you back most with YPO?", h: "Optional. Pick any.", type: "multi", o: [
-    "I don't want to look like I'm selling to friends", "Others already promote there", "Confidentiality, people know each other", "Not sure what's allowed", "Nothing, I just haven't started" ], other: true },
-  { id: "events", w: "Decides whether your gatherings become part of the brand and the content.", t: "Your yoga and meditation gatherings", type: "single", o: [
-    ["Keep them personal", ""],
-    ["Mention WithinWorks lightly", "A line at the end, a card on the table"],
-    ["Make them WithinWorks events", "Branded, photographed, shared"],
-    ["Add a short coaching reflection", "A 15-minute prompt inside the session"] ] },
-  { id: "circle", w: "Tests whether a community of your own could lead people to coaching.", t: "Would you host a small recurring circle?", h: "For example, a monthly reflection circle tied to your series.", type: "single", o: [
-    ["Yes, free, to build trust", ""], ["Yes, paid", ""], ["Maybe, one first", ""], ["Not now", ""] ] },
-  { id: "circleSize", w: "Sets the format: an intimate conversation or a small event.", t: "If yes, how many people feels right?", type: "single", chips: true, o: [ "4 to 6", "8 to 12", "15 to 25", "Bigger" ] }
+{ t: "Where you'd show up", why: "Instagram is your main space, LinkedIn second. Tap what you're open to.", qs: [
+  { id: "channels", w: "Shows us everything you're open to, so we plan only what you'll enjoy.", t: "You're open to…", type: "multi", o: [
+    "Instagram reels", "Instagram posts", "Instagram stories", "LinkedIn posts", "A newsletter", "WhatsApp updates to my circle" ] },
+  { id: "draft", w: "Shapes how we make content together.", t: "Making content together, you'd prefer…", type: "single", o: [
+    "We draft, you tweak", "You share a thought, we build it", "You write, we polish" ] }
 ]},
 
-{ stage: "Stage 5 · Months 6 to 12", t: "Amplify", why: "Once there's a body of work, take it to bigger rooms.", qs: [
-  { id: "pods", w: "Shows which conversations to pitch you for.", t: "Podcasts and conversations", h: "Tap all you'd say yes to.", type: "multi", o: [
-    ["Small or micro podcasts", "Niche hosts, warm audiences"],
-    ["Established leadership podcasts", ""],
-    ["Instagram lives with other coaches", ""],
-    ["Host my own conversation series", "Monthly"],
-    ["Not for now", ""] ] },
-  { id: "speak", w: "Builds your list of rooms to be seen in, beyond social media.", t: "Speaking and writing", h: "Tap all you'd say yes to.", type: "multi", o: [
-    ["Panels and talks at business events", ""],
-    ["Taster workshops inside companies", ""],
-    ["Women's leadership forums", ""],
-    ["Guest articles", "Gulf News, Khaleej Times, Entrepreneur Middle East"],
-    ["University or alumni talks", ""],
-    ["Not for now", ""] ] },
-  { id: "pr", w: "Tells us whether paid features belong in the plan, and when.", t: "Paid PR, such as a sponsored feature on Lovin Dubai", h: "No public price; features are quoted. Dubai PR agencies usually start around USD 5,000.", type: "single", o: [
-    ["Open to it now", ""], ["Once I have clients and testimonials", ""], ["Only earned press", ""], ["Not for me", ""] ] },
-  { id: "budget", w: "Sets the size of any paid test, so we only suggest what fits.", t: "Comfortable spend on a paid test in the first six months", type: "single", chips: true, o: [ "Nothing yet", "Up to AED 2,000", "AED 2,000 to 5,000", "AED 5,000 to 15,000", "More, if it's right" ] }
+{ t: "Your community", why: "Your network is your strongest channel. How far would you take it?", qs: [
+  { id: "champ", w: "Shapes how we ask people to refer you.", t: "Asking people to refer you feels…", type: "single", o: [
+    "Easy", "Fine with the right words", "Hard" ] },
+  { id: "ypo", w: "Shows how to bring YPO in without it feeling like selling.", t: "With YPO, you'd be open to…", type: "multi", o: [
+    "Sharing my posts", "Giving a talk", "Hosting a small circle", "Asking a few to champion me", "Keeping it separate" ] },
+  { id: "ypoHold", w: "Names the hesitation, so we plan around it.", t: "What holds you back with YPO?", type: "multi", o: [
+    "Feels like selling to friends", "Others already promote there", "Confidentiality", "Not sure what's allowed" ] },
+  { id: "events", w: "Decides whether your gatherings become part of the brand.", t: "Your yoga and meditation gatherings could…", type: "single", o: [
+    "Stay personal", "Carry a light WithinWorks touch", "Become WithinWorks events" ] },
+  { id: "circle", w: "Tests whether a small community of your own could lead people to coaching.", t: "Would you host a small reflection circle?", type: "single", o: [
+    "Yes, free", "Yes, paid", "Try one first", "Not now" ] }
 ]},
 
-{ stage: "How we'll work", t: "Testing and learning", why: "We'll run each cycle, look at what worked, and adjust.", qs: [
-  { id: "bold", w: "Sets the pace of our experiments.", t: "How adventurous should our first experiments be?", type: "single", o: [
-    ["Safe", "Small, quiet tests"], ["Measured", "A few new things a month"], ["Brave", "Try what feels a bit uncomfortable"] ] },
-  { id: "win", w: "Defines what we measure at the end of each cycle.", t: "In three months, what would feel like a win?", h: "Pick up to two.", type: "multi", max: 2, o: [
-    "Ten discovery calls", "Three to five paying clients", "Two or three strong testimonials", "A consistent voice on Instagram", "Being invited to speak", "A small community that shows up", "Feeling confident putting myself out there" ] }
+{ t: "Bigger rooms", why: "Ways to reach people who don't know you yet.", qs: [
+  { id: "rooms", w: "Builds your list of rooms to be seen in, beyond social media.", t: "You'd be open to…", type: "multi", o: [
+    "Small podcasts", "Big podcasts", "Lives with other coaches", "Panels and talks", "Company workshops", "Women's leadership forums", "Guest articles" ] },
+  { id: "pr", w: "Tells us whether paid features, like Lovin Dubai, belong in the plan.", t: "Paid PR, like a Lovin Dubai feature", type: "single", o: [
+    "Open to it", "Later, once I have clients", "Only earned press", "Not for me" ] },
+  { id: "budget", w: "Keeps any paid idea within what feels right.", t: "A comfortable spend to test something paid", type: "single", chips: true, o: [
+    "Nothing yet", "Up to AED 2,000", "AED 2,000 to 5,000", "AED 5,000 to 15,000", "More, if it's right" ] }
 ]},
 
-{ stage: "Optional", t: "In your words", why: "A line or two is plenty.", qs: [
-  { id: "admire", w: "Gives us a reference for the presence you want to build.", t: "Whose presence do you admire, online or in a room? What about them?", type: "text" },
-  { id: "story", w: "Becomes a candidate for one of your first reels.", t: "One story from your life or career you'd be glad to tell", type: "text" },
-  { id: "offlimits", w: "Anything here never appears in a draft.", t: "Anything firmly off-limits?", type: "text" },
-  { id: "feel", w: "Becomes the test for every piece of content.", t: "After seeing something of yours, how should a stranger feel?", type: "text" }
+{ t: "What a win looks like", why: "We'll try things, keep what works, and adjust.", qs: [
+  { id: "bold", w: "Sets how bold our experiments are.", t: "Our experiments should feel…", type: "single", o: [
+    "Safe", "Measured", "Brave" ] },
+  { id: "win", w: "Defines what we measure.", t: "What would feel like a win?", h: "Pick up to two.", type: "multi", max: 2, o: [
+    "Discovery calls", "Paying clients", "Strong testimonials", "A clear voice online", "Speaking invitations", "A community that shows up", "Feeling confident" ] }
+]},
+
+{ t: "In your words", why: "Optional. A line or two is plenty.", qs: [
+  { id: "admire", w: "Gives us a reference for the presence you want.", t: "Whose presence do you admire, and why?", type: "text" },
+  { id: "story", w: "Could become one of your first posts.", t: "A story you'd be glad to tell", type: "text" },
+  { id: "offlimits", w: "Anything here never appears in a draft.", t: "Anything off-limits?", type: "text" },
+  { id: "feel", w: "Becomes the test for every piece of content.", t: "How should a stranger feel after seeing your content?", type: "text" }
 ]}
 ];
 
-var KEY = "ww-megha-brand-v2";
+var KEY = "ww-megha-brand-v3";
 var state = {};
 try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
 function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} progress(); }
@@ -328,7 +238,7 @@ function norm(o) { return typeof o === "string" ? [o, "", ""] : [o[0], o[1] || "
 
 SECTIONS.forEach(function (s, si) {
   var sec = document.createElement("section"); sec.className = "sec";
-  sec.innerHTML = '<div class="sec-head"><div class="sec-n">' + esc(s.stage) + '</div><h2>' + esc(s.t) + '</h2><p class="sec-why">' + esc(s.why) + '</p></div>';
+  sec.innerHTML = '<div class="sec-head"><div class="sec-n">Part ' + (si + 1) + ' of ' + SECTIONS.length + '</div><h2>' + esc(s.t) + '</h2><p class="sec-why">' + esc(s.why) + '</p></div>';
   s.qs.forEach(function (q) {
     total++; n++;
     var d = document.createElement("div"); d.className = "q"; d.id = "q-" + q.id;
@@ -336,13 +246,13 @@ SECTIONS.forEach(function (s, si) {
     if (q.type === "single" || q.type === "multi") {
       var it = q.type === "single" ? "radio" : "checkbox";
       h += '<div class="opts' + (q.chips ? ' wrapchips' : '') + '">';
-      q.o.forEach(function (o) {
+      q.o.concat(["Not sure yet"]).forEach(function (o) {
         var p = norm(o), quote = p[2];
         var inner = quote ? '<em class="tag">' + esc(p[0]) + '</em><q>' + esc(quote) + '</q>' : esc(p[0]) + (p[1] ? '<small>' + esc(p[1]) + '</small>' : '');
         h += '<label class="opt"><input type="' + it + '" name="' + q.id + '" value="' + esc(p[0]) + '"><span>' + inner + '</span></label>';
       });
       h += '</div>';
-      if (q.other) h += '<textarea class="other" data-other="' + q.id + '" placeholder="Something else? Type it here"></textarea>';
+      h += '<textarea class="other" data-other="' + q.id + '" placeholder="Or write your own"></textarea>';
     } else if (q.type === "matrix") {
       h += '<div class="mx">';
       q.o.forEach(function (row, ri) {
@@ -350,7 +260,7 @@ SECTIONS.forEach(function (s, si) {
         YMN.forEach(function (v, vi) { h += '<label class="opt"><input type="radio" name="' + q.id + '__' + ri + '" value="' + v + '"><span class="' + "ymn"[vi] + '">' + v + '</span></label>'; });
         h += '</div></div>';
       });
-      h += '</div>';
+      h += '</div><textarea class="other" data-other="' + q.id + '" placeholder="Anything to add?"></textarea>';
     } else {
       h += '<textarea name="' + q.id + '" placeholder="Type here"></textarea>';
     }
@@ -375,8 +285,8 @@ function qById(id) { for (var i = 0; i < SECTIONS.length; i++) for (var j = 0; j
 function limit(id) {
   var q = qById(id); if (!q || !q.max) return;
   var boxes = form.querySelectorAll('input[name="' + id + '"]');
-  var c = form.querySelectorAll('input[name="' + id + '"]:checked').length;
-  boxes.forEach(function (b) { var off = !b.checked && c >= q.max; b.disabled = off; b.parentNode.classList.toggle("off", off); });
+  var c = form.querySelectorAll('input[name="' + id + '"]:checked:not([value="Not sure yet"])').length;
+  boxes.forEach(function (b) { var off = !b.checked && b.value !== "Not sure yet" && c >= q.max; b.disabled = off; b.parentNode.classList.toggle("off", off); });
 }
 
 form.addEventListener("input", function (e) {
@@ -408,11 +318,12 @@ progress();
 function summary() {
   var out = ["MEGHA: VOICE AND BRAND ANSWERS", ""];
   SECTIONS.forEach(function (s, si) {
-    out.push(s.stage.toUpperCase() + ": " + s.t.toUpperCase());
+    out.push((si + 1) + ". " + s.t.toUpperCase());
     s.qs.forEach(function (q) {
       if (q.type === "matrix") {
         out.push("- " + q.t);
         q.o.forEach(function (row, ri) { out.push("   " + row + ": " + (state[q.id + "__" + ri] || "skipped")); });
+        if ((state["other:" + q.id] || "").trim()) out.push("   Added: " + state["other:" + q.id].trim());
         return;
       }
       var v = state[q.id], o = (state["other:" + q.id] || "").trim();
