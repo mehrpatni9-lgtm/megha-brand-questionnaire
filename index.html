@@ -50,6 +50,8 @@ h1 em { color: var(--sage); }
 .q { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 1.3rem 1.1rem; margin-top: 1rem; }
 .q.done { border-color: rgba(93,107,92,.45); }
 .q-t { font-family: var(--serif); font-size: 1.28rem; line-height: 1.35; margin: 0 0 .25rem; font-weight: 400; }
+.q-w { font-size: .95rem; line-height: 1.5; color: var(--sage); background: var(--sage-wash); border-radius: 4px; padding: .45rem .7rem; margin: .4rem 0 .8rem; }
+.q-w b { font-weight: 500; letter-spacing: .02em; }
 .q-h { font-size: .92rem; color: var(--faint); margin: 0 0 .9rem; }
 
 /* chip options */
@@ -132,42 +134,42 @@ var YMN = ["Yes", "Sometimes", "Never"];
 
 var SECTIONS = [
 { t: "Where you are now", why: "So we pitch your story at the right stage.", qs: [
-  { id: "stage", t: "How would you like to describe where you are as a coach?", type: "single", o: [
+  { id: "stage", w: "Sets how your bio, LinkedIn headline and first posts introduce you.", t: "How would you like to describe where you are as a coach?", type: "single", o: [
     ["Experienced leader, newly certified coach", "Lead with 25 years, coaching as the next chapter"],
     ["A coach in the making, openly", "Share the ACC journey as it happens"],
     ["Just a coach, no qualifiers", "Let the work speak, keep the stage quiet"] ] },
-  { id: "acc", t: "After your ACC exam in November, how loud should we be about it?", type: "single", o: [
+  { id: "acc", w: "Decides whether November becomes a moment we plan content around.", t: "After your ACC exam in November, how loud should we be about it?", type: "single", o: [
     ["Celebrate it", "A post, an update on the site, a thank-you to your mentors"],
     ["Quiet update", "Add it to the site and profile, no fuss"],
     ["Not a talking point", "Credentials stay in the background"] ] },
-  { id: "who", t: "Who do you most want to reach first?", h: "Pick up to two.", type: "multi", max: 2, o: [
+  { id: "who", w: "Tells us who every post is written for, so it feels personal to them.", t: "Who do you most want to reach first?", h: "Pick up to two.", type: "multi", max: 2, o: [
     "Senior executives and CXOs", "Founders and business owners", "Women at a turning point", "Next-generation family business leaders", "Leaders moving countries or roles", "HR and people leaders" ], other: true }
 ]},
 
 { t: "How you sound", why: "Read these as styles, not scripts. Pick what feels most like you on a good day.", qs: [
-  { id: "words", t: "Which three words should people use about your voice?", h: "Pick three.", type: "multi", max: 3, chips: true, o: [
+  { id: "words", w: "Becomes your voice checklist. Every draft gets tested against these three words.", t: "Which three words should people use about your voice?", h: "Pick three.", type: "multi", max: 3, chips: true, o: [
     "Warm", "Calm", "Wise", "Direct", "Reflective", "Grounded", "Elegant", "Curious", "Playful", "Spiritual", "Practical", "Bold", "Gentle", "Sharp" ] },
-  { id: "post", t: "On the topic of a new leadership role, which post would you write?", type: "single", o: [
+  { id: "post", w: "Shows your natural writing style, so drafts sound like you from day one.", t: "On the topic of a new leadership role, which post would you write?", type: "single", o: [
     ["Reflective", "", "A new title changes what people expect of you overnight. What you expect of yourself takes longer to catch up. That gap is where the real work begins."],
     ["Direct", "", "Most new leaders keep doing the job they were promoted from. Your job now is to make other people good at it."],
     ["Story-led", "", "[A real moment from my banking or Traveazy years.] It took me a while to see what that moment was teaching me."],
     ["Question-led", "", "One question for your week: where are you leading from obligation, and where from choice?"] ] },
-  { id: "invite", t: "How would you invite someone to a discovery call?", type: "single", o: [
+  { id: "invite", w: "Sets how your posts end, and how often we ask for a call.", t: "How would you invite someone to a discovery call?", type: "single", o: [
     ["Gentle", "", "If something here resonated, I'd love to hear where you are. I keep a few spaces each month for a complimentary 45-minute conversation."],
     ["Simple", "", "Complimentary 45-minute discovery call. Link in the comments."],
     ["Selective", "", "This work asks you to look inward. If you're ready for that, let's talk."],
     ["Never ask directly", "", "I'd rather people find their own way to me."] ] },
-  { id: "advice", t: "Coaching draws answers out rather than giving advice. In your content, how far do you go?", type: "single", o: [
+  { id: "advice", w: "Finds your balance between coaching questions and a clear point of view.", t: "Coaching draws answers out rather than giving advice. In your content, how far do you go?", type: "single", o: [
     ["Mostly questions", "Prompts and reflections, very little telling"],
     ["A mix", "A clear point of view, then a question to sit with"],
     ["Clear opinions", "I'll say what I think about leadership and culture"] ] },
-  { id: "lang", t: "Language", type: "multi", chips: true, o: [ "English only", "A Hindi word now and then", "Spiritual language is fine", "Keep it secular", "Gentle humour is welcome", "Keep it serious" ] },
-  { id: "never", t: "Any words or phrases that are not you?", h: "Tap all that grate.", type: "multi", chips: true, o: [
+  { id: "lang", w: "Sets the vocabulary we write in.", t: "Language", type: "multi", chips: true, o: [ "English only", "A Hindi word now and then", "Spiritual language is fine", "Keep it secular", "Gentle humour is welcome", "Keep it serious" ] },
+  { id: "never", w: "Builds your banned-words list, so nothing sounds like generic coaching.", t: "Any words or phrases that are not you?", h: "Tap all that grate.", type: "multi", chips: true, o: [
     "Unlock your potential", "Level up", "Hustle", "Game-changer", "Manifest", "Healing", "Boss", "Journey", "Thrive", "Abundance", "Empower", "Mindset shift" ], other: true }
 ]},
 
 { t: "What you're comfortable sharing", why: "Your line on personal content, topic by topic. Sometimes means with care, and you see it first.", qs: [
-  { id: "share", t: "Would you talk about…", type: "matrix", o: [
+  { id: "share", w: "Draws your line on personal content, so no draft ever crosses it.", t: "Would you talk about…", type: "matrix", o: [
     "Lessons from banking (Citibank, Barclays)",
     "Building Traveazy from 10 to 300+ people",
     "Mistakes you made as a leader",
@@ -180,7 +182,7 @@ var SECTIONS = [
     "Motherhood and your daughters",
     "Your dog",
     "Opinions on corporate culture and HR" ] },
-  { id: "face", t: "How visible do you want to be?", type: "single", o: [
+  { id: "face", w: "Decides whether we plan around writing, photos or video.", t: "How visible do you want to be?", type: "single", o: [
     ["Words first", "Writing, with a professional photo now and then"],
     ["Words and photos", "Including candid moments, not only portraits"],
     ["Ready for camera", "Short videos of me talking"],
@@ -188,7 +190,7 @@ var SECTIONS = [
 ]},
 
 { t: "Formats and rhythm", why: "Only plan what you can keep up and enjoy.", qs: [
-  { id: "formats", t: "Which formats feel natural?", h: "Tap all that apply.", type: "multi", o: [
+  { id: "formats", w: "Picks the formats in your content plan.", t: "Which formats feel natural?", h: "Tap all that apply.", type: "multi", o: [
     ["Short LinkedIn posts", "A few lines and a thought"],
     ["Longer essays", "Substack or LinkedIn articles"],
     ["Carousels", "We design, you approve the words"],
@@ -196,77 +198,77 @@ var SECTIONS = [
     ["Voice notes we turn into posts", "You talk, we write"],
     ["LinkedIn Live or a small online session", ""],
     ["Instagram reflections and quotes", ""] ] },
-  { id: "freq", t: "How often could you post without it feeling like a chore?", type: "single", chips: true, o: [ "Once a week", "Twice a week", "Three times a week", "When inspired" ] },
-  { id: "time", t: "Time you can give each week, including approving drafts", type: "single", chips: true, o: [ "Under 30 minutes", "About an hour", "Two to three hours", "Whatever it takes" ] },
-  { id: "draft", t: "How do you prefer to work with us on content?", type: "single", o: [
+  { id: "freq", w: "Sets a posting rhythm you can keep.", t: "How often could you post without it feeling like a chore?", type: "single", chips: true, o: [ "Once a week", "Twice a week", "Three times a week", "When inspired" ] },
+  { id: "time", w: "Helps us plan around your week.", t: "Time you can give each week, including approving drafts", type: "single", chips: true, o: [ "Under 30 minutes", "About an hour", "Two to three hours", "Whatever it takes" ] },
+  { id: "draft", w: "Shapes how we work together, so approving content takes minutes.", t: "How do you prefer to work with us on content?", type: "single", o: [
     ["We draft, you tweak", "Fastest"],
     ["You share a thought, we shape it", "Voice note or a few lines from you"],
     ["You write, we polish", "Most of you in it"] ] }
 ]},
 
 { t: "Getting heard", why: "Ways to reach the third and fourth circle of people who don't know you yet.", qs: [
-  { id: "pods", t: "Podcasts and conversations", h: "Tap all you'd say yes to.", type: "multi", o: [
+  { id: "pods", w: "Shows which conversations to pitch you for.", t: "Podcasts and conversations", h: "Tap all you'd say yes to.", type: "multi", o: [
     ["Guest on established leadership podcasts", ""],
     ["Guest on small or micro podcasts", "Niche hosts, 500 to 5,000 listeners, warm audiences"],
     ["Instagram or LinkedIn lives with other coaches", ""],
     ["Host my own small conversation series", "Leaders in conversation, monthly"],
     ["Not for now", ""] ] },
-  { id: "speak", t: "Speaking and writing for others", h: "Tap all you'd say yes to.", type: "multi", o: [
+  { id: "speak", w: "Builds your list of rooms to be seen in, beyond social media.", t: "Speaking and writing for others", h: "Tap all you'd say yes to.", type: "multi", o: [
     ["Panels and talks at business events", ""],
     ["Workshops inside companies", "A taster session for a leadership team"],
     ["Women's leadership forums", ""],
     ["Guest articles", "Gulf News, Khaleej Times, Entrepreneur Middle East"],
     ["University or alumni talks", "Symbiosis and others"],
     ["Not for now", ""] ] },
-  { id: "pr", t: "Paid PR, such as a sponsored feature on Lovin Dubai", h: "Lovin Dubai has no public price; features are quoted. Dubai PR agencies usually start around USD 5,000.", type: "single", o: [
+  { id: "pr", w: "Tells us whether paid features belong in the plan, and when.", t: "Paid PR, such as a sponsored feature on Lovin Dubai", h: "Lovin Dubai has no public price; features are quoted. Dubai PR agencies usually start around USD 5,000.", type: "single", o: [
     ["Open to it now", ""],
     ["Open once I have a few clients and testimonials", ""],
     ["Only earned press, not paid", ""],
     ["Not for me", ""] ] },
-  { id: "budget", t: "If a paid test made sense, what would you be comfortable spending in the first three months?", type: "single", chips: true, o: [ "Nothing yet", "Up to AED 2,000", "AED 2,000 to 5,000", "AED 5,000 to 15,000", "More, if it's right" ] }
+  { id: "budget", w: "Sets the size of any paid test, so we only suggest what fits.", t: "If a paid test made sense, what would you be comfortable spending in the first three months?", type: "single", chips: true, o: [ "Nothing yet", "Up to AED 2,000", "AED 2,000 to 5,000", "AED 5,000 to 15,000", "More, if it's right" ] }
 ]},
 
 { t: "Your community", why: "You already gather people. This is about how much of that can carry WithinWorks.", qs: [
-  { id: "ypo", t: "YPO: what feels comfortable?", h: "Tap all that apply.", type: "multi", o: [
+  { id: "ypo", w: "Shows how to bring in your strongest network without it feeling like selling.", t: "YPO: what feels comfortable?", h: "Tap all that apply.", type: "multi", o: [
     ["Share my posts and one-pager in YPO groups", ""],
     ["Offer a free talk or workshop to a chapter or network", ""],
     ["Host a small circle for YPO members", ""],
     ["Ask a few members to champion me and refer people", ""],
     ["Mention coaching only when asked", ""],
     ["Keep YPO separate from my coaching", ""] ] },
-  { id: "ypoHold", t: "What holds you back most with YPO?", h: "Optional. Pick any.", type: "multi", o: [
+  { id: "ypoHold", w: "Names the hesitation, so the YPO plan works around it.", t: "What holds you back most with YPO?", h: "Optional. Pick any.", type: "multi", o: [
     "I don't want to look like I'm selling to friends", "Others already promote there", "Confidentiality, people know each other", "Not sure what's allowed", "Nothing, I just haven't started" ], other: true },
-  { id: "events", t: "Your yoga and meditation gatherings", type: "single", o: [
+  { id: "events", w: "Decides whether your gatherings become part of the brand.", t: "Your yoga and meditation gatherings", type: "single", o: [
     ["Keep them personal", "They stay separate from WithinWorks"],
     ["Mention WithinWorks lightly", "A line at the end, a card on the table"],
     ["Make them WithinWorks events", "Branded, photographed, shared"],
     ["Add a short coaching reflection", "A 15-minute prompt inside the session"] ] },
-  { id: "circle", t: "Would you host a small recurring circle?", h: "For example, a monthly leaders' or women's reflection circle.", type: "single", o: [
+  { id: "circle", w: "Tests whether a community of your own could lead people to coaching.", t: "Would you host a small recurring circle?", h: "For example, a monthly leaders' or women's reflection circle.", type: "single", o: [
     ["Yes, free, to build trust", ""],
     ["Yes, paid", ""],
     ["Maybe, as a one-off first", ""],
     ["Not now", ""] ], },
-  { id: "circleSize", t: "If yes, how many people feels right?", type: "single", chips: true, o: [ "4 to 6", "8 to 12", "15 to 25", "Bigger" ] },
-  { id: "champ", t: "How do you feel about asking people to refer you?", type: "single", o: [
+  { id: "circleSize", w: "Sets the format: an intimate conversation or a small event.", t: "If yes, how many people feels right?", type: "single", chips: true, o: [ "4 to 6", "8 to 12", "15 to 25", "Bigger" ] },
+  { id: "champ", w: "Shapes the referral plan, including whether we write the asks for you.", t: "How do you feel about asking people to refer you?", type: "single", o: [
     ["Easy", "I'll ask directly"],
     ["Fine with a nudge", "If you give me the words"],
     ["Hard", "I'd rather they offer"] ] }
 ]},
 
 { t: "Testing and learning", why: "We'll try things in small rounds and keep what works.", qs: [
-  { id: "bold", t: "How adventurous should our first experiments be?", type: "single", o: [
+  { id: "bold", w: "Sets the pace of our experiments.", t: "How adventurous should our first experiments be?", type: "single", o: [
     ["Safe", "Small, quiet tests"],
     ["Measured", "A few new things a month, nothing loud"],
     ["Brave", "Try what feels a bit uncomfortable"] ] },
-  { id: "win", t: "In three months, what would feel like a win?", h: "Pick up to two.", type: "multi", max: 2, o: [
+  { id: "win", w: "Defines what we measure in the first three months.", t: "In three months, what would feel like a win?", h: "Pick up to two.", type: "multi", max: 2, o: [
     "Ten discovery calls", "Three to five paying clients", "Two or three strong testimonials", "A clear, consistent voice online", "Being invited to speak", "A small community that shows up", "Feeling confident about putting myself out there" ] }
 ]},
 
 { t: "In your words", why: "Optional. A line or two is plenty. Voice notes welcome on WhatsApp instead.", qs: [
-  { id: "admire", t: "Whose presence do you admire, online or in a room? What about them?", type: "text" },
-  { id: "story", t: "One story from your life or career you'd be glad to tell", type: "text" },
-  { id: "offlimits", t: "Anything that is firmly off-limits?", type: "text" },
-  { id: "feel", t: "After reading something of yours, how should a stranger feel?", type: "text" }
+  { id: "admire", w: "Gives us a reference for the presence you want to build.", t: "Whose presence do you admire, online or in a room? What about them?", type: "text" },
+  { id: "story", w: "Becomes a candidate for one of your first posts.", t: "One story from your life or career you'd be glad to tell", type: "text" },
+  { id: "offlimits", w: "Anything here never appears in a draft.", t: "Anything that is firmly off-limits?", type: "text" },
+  { id: "feel", w: "Becomes the test for every piece of content.", t: "After reading something of yours, how should a stranger feel?", type: "text" }
 ]}
 ];
 
@@ -286,7 +288,7 @@ SECTIONS.forEach(function (s, si) {
   s.qs.forEach(function (q) {
     total++; n++;
     var d = document.createElement("div"); d.className = "q"; d.id = "q-" + q.id;
-    var h = '<p class="q-t">' + esc(q.t) + '</p>' + (q.h ? '<p class="q-h">' + esc(q.h) + '</p>' : '');
+    var h = '<p class="q-t">' + esc(q.t) + '</p>' + (q.w ? '<p class="q-w"><b>Why we ask:</b> ' + esc(q.w) + '</p>' : '') + (q.h ? '<p class="q-h">' + esc(q.h) + '</p>' : '');
     if (q.type === "single" || q.type === "multi") {
       var it = q.type === "single" ? "radio" : "checkbox";
       h += '<div class="opts' + (q.chips ? ' wrapchips' : '') + '">';
