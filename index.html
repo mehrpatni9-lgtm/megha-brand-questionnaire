@@ -122,7 +122,7 @@ textarea:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
     <div class="btns one">
       <button class="btn btn-main" type="button" id="submit">Submit my answers</button>
     </div>
-    <p class="saved" id="saved">Your answers are saved on this device until you submit.</p>
+    <p class="saved" id="saved" aria-live="polite">Your answers are saved on this device until you submit.</p>
   </section>
 </div>
 <div class="toast" id="toast"></div>
@@ -388,9 +388,9 @@ var sending = false;
 document.getElementById("submit").onclick = function () {
   if (sending) return;
   var btn = this, note = document.getElementById("saved");
-  sending = true; btn.textContent = "Sending...";
-  fetch("https://formsubmit.co/ajax/" + MAIL, {
-    method: "POST",
+  sending = true; btn.textContent = "Sending, this can take a minute..."; note.textContent = "Please keep this page open until you see thank you.";
+  fetch("https://formsubmit.co/ajax/f762ce9bdab3fb81a174184167408f95", {
+    method: "POST", keepalive: true,
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
     body: JSON.stringify({ _subject: "Megha's voice and brand answers", _template: "box", _captcha: "false", Answers: summary() })
   }).then(function (r) { return r.json(); }).then(function (j) {
