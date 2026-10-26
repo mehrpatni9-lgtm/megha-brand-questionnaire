@@ -390,7 +390,6 @@ document.getElementById("submit").onclick = function () {
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
     body: JSON.stringify({ _subject: "Megha's voice and brand answers", _template: "box", _captcha: "false", Answers: summary() })
   }).catch(function () {});
-  try { localStorage.removeItem(KEY); } catch (e) {}
   document.getElementById("send").innerHTML = '<h2>Thank you, Megha</h2><p>Your answers are with Mehr. We will come back with a first draft of your voice and plan.</p>';
 };
 </script>
