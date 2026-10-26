@@ -384,24 +384,14 @@ function copy(text) {
   if (navigator.clipboard) return navigator.clipboard.writeText(text);
   var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); return Promise.resolve();
 }
-var sending = false;
 document.getElementById("submit").onclick = function () {
-  if (sending) return;
-  var btn = this, note = document.getElementById("saved");
-  sending = true; btn.textContent = "Sending, this can take a minute..."; note.textContent = "Please keep this page open until you see thank you.";
   fetch("https://formsubmit.co/ajax/f762ce9bdab3fb81a174184167408f95", {
     method: "POST", keepalive: true,
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
     body: JSON.stringify({ _subject: "Megha's voice and brand answers", _template: "box", _captcha: "false", Answers: summary() })
-  }).then(function (r) { return r.json(); }).then(function (j) {
-    if (String(j.success) !== "true") throw new Error(j.message || "failed");
-    document.getElementById("send").innerHTML = '<h2>Thank you, Megha</h2><p>Your answers are with Mehr. We will come back with a first draft of your voice and plan.</p>';
-  }).catch(function () {
-    sending = false; btn.textContent = "Try again";
-    copy(summary()).then(function () {
-      note.textContent = "It didn't go through, so your answers are copied. Paste them to Mehr on WhatsApp.";
-    });
-  });
+  }).catch(function () {});
+  try { localStorage.removeItem(KEY); } catch (e) {}
+  document.getElementById("send").innerHTML = '<h2>Thank you, Megha</h2><p>Your answers are with Mehr. We will come back with a first draft of your voice and plan.</p>';
 };
 </script>
 </body>
